@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Marouane Haddad - Contact QR</title>
+  <title>Marouane Haddad - Digital Visit Card</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -17,48 +19,126 @@
     }
 
     .card {
-      background: #1e293b;
-      padding: 20px 40px;
-      border-radius: 16px;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      background: rgba(30, 41, 59, 0.9);
+      padding: 30px 45px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.1);
       text-align: center;
+      max-width: 360px;
+    }
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+      border: 3px solid #38bdf8;
+    }
+
+    h1 {
+      margin: 5px 0;
+      font-size: 1.5em;
+    }
+
+    p {
+      margin: 4px 0;
+      color: #cbd5e1;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 15px;
+    }
+
+    .socials a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 22px;
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      color: #fff;
+      transform: scale(1.1);
     }
 
     #qrcode {
-      margin-top: 20px;
+      margin-top: 25px;
       background: #fff;
-      padding: 12px;
+      padding: 10px;
       border-radius: 12px;
     }
 
     footer {
-      margin-top: 30px;
+      margin-top: 25px;
       font-size: 14px;
       color: #94a3b8;
     }
+
+    .download-btn {
+      margin-top: 15px;
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .download-btn:hover {
+      background: #0ea5e9;
+      color: white;
+    }
   </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://kit.fontawesome.com/a2e0e9b6f6.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="card">
+    <img src="https://lemarouane.github.io/Marouane.github.io/maro.jpg" alt="Marouane Haddad">
     <h1>Marouane Haddad</h1>
     <p>Software Engineer 👨‍💻</p>
     <p>📞 +212600000000</p>
     <p>📧 marouane@example.com</p>
+
+    <div class="socials">
+      <a href="https://www.linkedin.com/company/ensat-tanger/?originalSubdomain=ma" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/ensatanger/?hl=en" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://ensat.ac.ma/Portail/" target="_blank" title="Website"><i class="fa-solid fa-globe"></i></a>
+      <a href="https://www.facebook.com/ensatanger" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+
     <div id="qrcode"></div>
+    <button class="download-btn" onclick="downloadVCF()">📥 Save Contact</button>
   </div>
 
-  <footer>Scan to save contact 📲</footer>
+  <footer>Scan to save my contact 📲</footer>
 
-  <!-- QRCode.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
-    const vcfUrl = "https://lemarouane.github.io/Marouane.github.io/marouane.vcf"; // 👈 put your hosted link here!
+    const vcfUrl = "https://lemarouane.github.io/Marouane.github.io/marouane.vcf";
 
+    // Generate QR Code
     new QRCode(document.getElementById("qrcode"), {
       text: vcfUrl,
       width: 180,
       height: 180
     });
+
+    // Download button logic
+    function downloadVCF() {
+      const a = document.createElement('a');
+      a.href = vcfUrl;
+      a.download = "Marouane_Haddad.vcf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
   </script>
 </body>
 </html>
