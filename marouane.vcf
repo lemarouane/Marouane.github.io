@@ -3,6 +3,11 @@ VERSION:3.0
 N:Haddad;Marouane;;;
 FN:Marouane Haddad
 TITLE:Software Engineer
-TEL;TYPE=cell:+212600000000
+TEL;TYPE=CELL:+212600000000
 EMAIL:marouane@example.com
+PHOTO;TYPE=JPEG;VALUE=URI:https://lemarouane.github.io/Marouane.github.io/maro.jpg
+URL;TYPE=work:https://ensat.ac.ma/Portail/
+URL;TYPE=linkedin:https://www.linkedin.com/company/ensat-tanger/?originalSubdomain=ma
+URL;TYPE=instagram:https://www.instagram.com/ensatanger/?hl=en
+URL;TYPE=facebook:https://www.facebook.com/ensatanger
 END:VCARD
