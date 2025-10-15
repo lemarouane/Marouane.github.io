@@ -45,7 +45,6 @@
     <p>📞 +212600000000</p>
     <p>📧 marouane@example.com</p>
     <div id="qrcode"></div>
-    <a id="downloadLink" style="display:none;"></a>
   </div>
 
   <footer>Scan to save contact 📲</footer>
@@ -53,25 +52,8 @@
   <!-- QRCode.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
-    const vCardData = `BEGIN:VCARD
-VERSION:3.0
-N:Haddad;Marouane;;;
-FN:Marouane Haddad
-TITLE:Software Engineer
-TEL;TYPE=cell:+212600000000
-EMAIL:marouane@example.com
-END:VCARD`;
+    const vcfUrl = "https://yourwebsite.com/marouane.vcf"; // 👈 put your hosted link here!
 
-    // Create a .vcf file blob
-    const blob = new Blob([vCardData], { type: "text/vcard" });
-    const vcfUrl = URL.createObjectURL(blob);
-
-    // Make a hidden download link (optional)
-    const link = document.getElementById("downloadLink");
-    link.href = vcfUrl;
-    link.download = "Marouane_Haddad.vcf";
-
-    // Generate QR code that links to the .vcf file
     new QRCode(document.getElementById("qrcode"), {
       text: vcfUrl,
       width: 180,
