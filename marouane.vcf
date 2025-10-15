@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Haddad;Marouane;;;
+FN:Marouane Haddad
+TITLE:Software Engineer
+TEL;TYPE=cell:+212600000000
+EMAIL:marouane@example.com
+END:VCARD
