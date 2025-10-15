@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marouane Haddad - Contact QR</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0f172a;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    #qrcode {
+      margin-top: 20px;
+      background: #fff;
+      padding: 12px;
+      border-radius: 12px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Marouane Haddad</h1>
+    <p>Software Engineer 👨‍💻</p>
+    <p>📞 +212600000000</p>
+    <p>📧 marouane@example.com</p>
+    <div id="qrcode"></div>
+    <a id="downloadLink" style="display:none;"></a>
+  </div>
+
+  <footer>Scan to save contact 📲</footer>
+
+  <!-- QRCode.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const vCardData = `BEGIN:VCARD
+VERSION:3.0
+N:Haddad;Marouane;;;
+FN:Marouane Haddad
+TITLE:Software Engineer
+TEL;TYPE=cell:+212600000000
+EMAIL:marouane@example.com
+END:VCARD`;
+
+    // Create a .vcf file blob
+    const blob = new Blob([vCardData], { type: "text/vcard" });
+    const vcfUrl = URL.createObjectURL(blob);
+
+    // Make a hidden download link (optional)
+    const link = document.getElementById("downloadLink");
+    link.href = vcfUrl;
+    link.download = "Marouane_Haddad.vcf";
+
+    // Generate QR code that links to the .vcf file
+    new QRCode(document.getElementById("qrcode"), {
+      text: vcfUrl,
+      width: 180,
+      height: 180
+    });
+  </script>
+</body>
+</html>
